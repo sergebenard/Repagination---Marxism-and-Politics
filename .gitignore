@@ -1,0 +1,6 @@
+#ignore all kind of files in src folder
+src/*.*
+src/*/*.*
+#except tex files
+!src/*/*.tex
+!src/*.tex
