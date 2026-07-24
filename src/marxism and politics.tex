@@ -1,30 +1,76 @@
 \documentclass[12pt,legalpaper]{report}
 \setlength{\parskip}{\baselineskip}
-\usepackage[colorlinks, linktocpage=true]{hyperref}
+
+\usepackage[colorlinks]{hyperref}
+\usepackage{tabularx}
+\usepackage{endnotes}
+\usepackage{csquotes}
+
+% https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
+\usepackage{hyphenat}
+
+% Use symbols for the footnotes, and reset the next
+% symbol if it's on a new page
+% https://tex.stackexchange.com/a/1659
+\usepackage[perpage, symbol]{footmisc}
+
+\usepackage{postnotes}
+% You could remove the notes heading with:
+% \postnotesetup{heading=}
+% But I think you'd do better by letting the package do its job for you:
+\postnotesetup{heading=Notes}
+
+\usepackage{imakeidx}
+\makeindex
+
+% \counterwithin*{endnote}{part}     % Reset endnote numbering every new part
+% \counterwithin*{endnote}{chapter}  % Reset endnote numbering every new chapter
+
+
+% Set the chapter prefixes to Roman style for the TOC
+\renewcommand{\thechapter}{\Roman{chapter}}
+
+\title{Marxism and Politics}
+\author{Ralph Miliband}
 
 \begin{document}
 
 \pagenumbering{arabic}
-% \chapter*{Thai Abstract}
-% \addcontentsline{toc}{chapter}{Thai Abstract}
 
-% \chapter*{English Abstract}
-% \addcontentsline{toc}{chapter}{English Abstract}
-
-% \chapter*{Acknowledgements}
-% \addcontentsline{toc}{chapter}{Acknowledgements}
+\include{preface}
 
 \tableofcontents
 \newpage
 
-\include{chapters/001-introduction}
+\include{chapters/000-abbreviations}
+\newpage
 
+\renewcommand{\thesection}{\Roman{section}}
+
+\include{chapters/001-introduction}
 \newpage
 
 \include{chapters/002-class and class conflict}
-
 \newpage
 
+\include{chapters/003-the defence of the old order i}
+\newpage
 
+\include{chapters/004-the defence of the old order ii}
+\newpage
+
+\include{chapters/005-class and party}
+\newpage
+
+\include{chapters/006-reform and revolution}
+\newpage
+
+\include{bibliography}
+\newpage
+
+\include{index}
+\newpage
+
+% \printindex
 
 \end{document}
