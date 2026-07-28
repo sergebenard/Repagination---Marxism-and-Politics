@@ -1,10 +1,17 @@
 \documentclass[12pt,legalpaper]{report}
 \setlength{\parskip}{\baselineskip}
 
+% imakeidx needs to be before hyperref
+\usepackage{imakeidx}
+\makeindex[intoc=true] % insert index into table of contents
+% \AtBeginDocument{\renewcommand\indexname{}}
+
 \usepackage[colorlinks]{hyperref}
 \usepackage{tabularx}
-\usepackage{endnotes}
 \usepackage{csquotes}
+\renewcommand{\mkbegdispquote}[2]{\itshape}
+
+\usepackage{indentfirst}
 
 % https://en.wikibooks.org/wiki/LaTeX/Text_Formatting#Hyphenation
 \usepackage{hyphenat}
@@ -17,60 +24,73 @@
 \usepackage{postnotes}
 % You could remove the notes heading with:
 % \postnotesetup{heading=}
-% But I think you'd do better by letting the package do its job for you:
-\postnotesetup{heading=Notes}
+\postnotesetup{heading=}
 
-\usepackage{imakeidx}
-\makeindex
+% Tell LaTeX it's infinitely bad to make
+% paragraphs with widows and orphans
+\clubpenalty=9996
+\widowpenalty=9999
+\brokenpenalty=4991
+\predisplaypenalty=10000
+\postdisplaypenalty=1549
+\displaywidowpenalty=1602
 
-% \counterwithin*{endnote}{part}     % Reset endnote numbering every new part
-% \counterwithin*{endnote}{chapter}  % Reset endnote numbering every new chapter
+% --------------------------------------------
+% Chapter title formatting 
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\LARGE\bfseries}{\chaptertitlename\ \thechapter}{0pt}{\LARGE}
+\titlespacing*{\chapter}{0pt}{50pt}{0pt}
+\titlespacing*{\section}{0pt}{10pt}{0pt}
+% End of chapter title formatting
+% --------------------------------------------
 
+% Page numbering
+\pagenumbering{arabic}
 
+% Chapter numbering
 % Set the chapter prefixes to Roman style for the TOC
 \renewcommand{\thechapter}{\Roman{chapter}}
 
+% Document title, author, date information
 \title{Marxism and Politics}
 \author{Ralph Miliband}
+\date{1977, Oxford University Press}
 
+% =====================================================
+% Document begin
 \begin{document}
 
-\pagenumbering{arabic}
+\include{pages/marxist introductions}
 
-\include{preface}
+\include{pages/archive dot org acknowledgement}
+
+\include{pages/title page}
+
+\include{pages/oxford university press details}
+
+\include{pages/preface}
 
 \tableofcontents
-\newpage
 
 \include{chapters/000-abbreviations}
-\newpage
 
 \renewcommand{\thesection}{\Roman{section}}
 
 \include{chapters/001-introduction}
-\newpage
 
 \include{chapters/002-class and class conflict}
-\newpage
 
 \include{chapters/003-the defence of the old order i}
-\newpage
 
 \include{chapters/004-the defence of the old order ii}
-\newpage
 
 \include{chapters/005-class and party}
-\newpage
 
 \include{chapters/006-reform and revolution}
-\newpage
 
-\include{bibliography}
-\newpage
+\include{pages/bibliography}
 
-\include{index}
-\newpage
-
-% \printindex
+\include{pages/index}
 
 \end{document}
