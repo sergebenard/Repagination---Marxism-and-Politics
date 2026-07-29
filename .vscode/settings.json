@@ -1,0 +1,43 @@
+{
+    "git.enableSmartCommit": true,
+    "editor.minimap.enabled": false,
+    "editor.wordWrap": "on",
+    "editor.copyWithSyntaxHighlighting": false,
+    "git.confirmSync": false,
+    "ltex.language": "en-GB",
+
+    "latex-workshop.latex.recipes": [
+
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk",
+                "copyPDF"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-shell-escape",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "-auxdir=%AUXDIR%",
+                "%DOC%"
+            ]
+        },
+        {
+            "name": "copyPDF",
+            "command": "mv",
+            "args": [
+                "%DOC%.pdf",
+                "%WORKSPACE_FOLDER%/%DOCFILE%.pdf"
+            ]
+        }
+    ],
+}
